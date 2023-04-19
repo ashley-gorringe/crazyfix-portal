@@ -47,62 +47,10 @@ if(empty($_POST['action'])){
 			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/account-delete.php';
 			break;
 		
-		case 'settings-general':
-			checkLevelProcess(1);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/settings-general.php';
-			break;
-		case 'team-delete':
-			checkLevelProcess(0);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/team-delete.php';
-			break;
 
-		case 'member-level':
+		case 'vehicle-new':
 			checkLevelProcess(1);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/member-level.php';
-			break;
-		case 'member-transfer':
-			checkLevelProcess(0);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/member-transfer.php';
-			break;
-		case 'member-remove':
-			checkLevelProcess(1);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/member-remove.php';
-			break;
-
-		case 'server-new':
-			checkLevelProcess(1);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/server-new.php';
-			break;
-		case 'server-delete':
-			checkLevelProcess(1);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/server-delete.php';
-			break;
-		case 'server-edit':
-			checkLevelProcess(1);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/server-edit.php';
-			break;
-
-		case 'site-new':
-			checkLevelProcess(2);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/site-new.php';
-			break;
-		case 'site-delete':
-			checkLevelProcess(2);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/site-delete.php';
-			break;
-
-		case 'domain-new':
-			checkLevelProcess(2);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/domain-new.php';
-			break;
-		case 'domain-remove':
-			checkLevelProcess(2);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/domain-remove.php';
-			break;
-
-		case 'refresh-dns-site':
-			checkLevelProcess(2);
-			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/refresh-dns-site.php';
+			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/vehicle-new.php';
 			break;
 
 		default:

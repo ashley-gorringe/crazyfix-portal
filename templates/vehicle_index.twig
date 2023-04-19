@@ -18,21 +18,16 @@
     <div class="container">
         <div class="table --vehicles">
             <div class="header">
-                <span>Registration</span>
                 <span>Make &amp; Model</span>
-                <span>Fuel Type</span>
+                <span>Registration</span>
             </div>
             <div class="body">
+            {% for vehicle in vehicles %}
             <a class="row" href="#">
-                <span>LN16 XAB</span>
-                <span>Volvo S60</span>
-                <span>Diesel</span>
+                <span>{{vehicle.make}} {{vehicle.model}}</span>
+                <span>{{vehicle.registration}}</span>
             </a>
-            <a class="row" href="#">
-                <span>KR18 AVW</span>
-                <span>Volvo V40</span>
-                <span>Petrol</span>
-            </a>
+            {% endfor %}
             </div>
         </div>
     </div>

@@ -161,6 +161,13 @@ function validUKPostcode($string){
 		return false;
 	}
 }
+function validUKVehicleReg($string){
+	if(preg_match('/^([A-Z]{2}[0-9]{2}[A-Z]{3})$/', $string)){
+		return true;
+	}else{
+		return false;
+	}
+}
 
 function validateURL($string){
 	$regex = '_^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d{1,3}(?:\.\d{1,3}){3}|(?:[a-z\d\.-]+\.)+(?:[a-z]{2,}))(?::\d+)?(?:[/?#]\S*)?$_iuS';
