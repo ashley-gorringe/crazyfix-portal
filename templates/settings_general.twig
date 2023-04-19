@@ -1,0 +1,41 @@
+{% extends "_layout_settings.twig" %}
+
+{% set menuSlug = "settings" %}
+{% set pageTitle = "Settings" %}
+
+{% set subMenuSlug = "general" %}
+
+{% block main %}
+<section>
+    <form class="process-form page-form">
+        <input type="hidden" name="action" value="settings-general" />
+        <dialog class="form-actions">
+            <div class="form-actions-container">
+                <span>You have unsaved changes.</span>
+                <button type="button" class="button --quiet page-form-cancel-button">Cancel</button>
+                <button type="submit" class="button --primary">Save Changes<i data-feather="loader"></i></button>
+            </div>
+        </dialog>
+        <div class="form-section">
+            <h1>General</h1>
+            <p class="lead">Update your Team's general information.</p>
+            <div class="form-group">
+                <label for="name">Team Name</label>
+                <input type="text" name="team_name" value="{{ team.name }}" class="form-control" />
+                <div class="form-error"></div>
+            </div>
+        </div>
+        {% if user.level <= 0 %}
+        <div class="form-section">
+            <h2>Danger Zone</h2>
+            <p>This section contains options that could permanently delete your Team or erase important data. Only make changes here if you're absolutely sure you want to proceed!</p>
+            <div class="form-group">
+                <label>Delete Team</label>
+                <button type="button" class="button --danger-persistant team-delete-button">Delete Team</button>
+                <div class="form-help">This will permanently delete your Team and all of your data. This action cannot be undone.</div>
+            </div>
+        </div>
+        {% endif %}
+    </form>
+</section>
+{% endblock %}

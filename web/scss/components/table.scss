@@ -1,0 +1,149 @@
+.table{
+    display: block;
+    position: relative;
+    margin-left: -15px;
+    margin-right: -15px;
+    .header{
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(1,1fr);
+        column-gap: 30px;
+        padding: 0 15px;
+        margin-bottom: 10px;
+        span{
+            display: block;
+            position: relative;
+            font-size: 14px;
+            line-height: 1em;
+            font-weight: 700;
+            padding: 3px 0;
+            min-width: 0;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+            &:last-child{
+                text-align: right;
+            }
+        }
+    }
+    .row{
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(1,1fr);
+        column-gap: 30px;
+        align-items: center;
+        background-color: $colour-borders-absolute;
+        border-radius: $border-radius;
+        &:nth-child(even){
+            background-color: white;
+        }
+        height: 50px;
+        padding: 0 15px;
+        color: inherit;
+        text-decoration: none;
+        span{
+            display: block;
+            position: relative;
+            font-size: 16px;
+            line-height: 1em;
+            padding: 3px 0;
+            min-width: 0;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+            &:last-child{
+                text-align: right;
+            }
+            &:first-of-type{
+                font-weight: 600;
+            }
+        }
+        &::after{
+            content: '';
+            display: block;
+            position: absolute;
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            top: 2px;
+            left: 2px;
+            border: 2px solid $colour-primary1;
+            border-radius: $border-radius - 2px;
+            opacity: 0;
+        }
+        &:hover::after{
+            opacity: 0.4;
+        }
+        &:active::after{
+            opacity: 1;
+        }
+    }
+
+    .row-skeleton{
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(1,1fr);
+        column-gap: 30px;
+        align-items: center;
+        background-color: lighten($colour-borders-absolute,4%);
+        border-radius: $border-radius;
+        &:nth-child(even){
+            background-color: white;
+        }
+        height: 50px;
+        padding: 0 15px;
+        color: inherit;
+        text-decoration: none;
+        span{
+            display: block;
+            position: relative;
+			height: 20px;
+			width: 60%;
+			background-color: $colour-borders-absolute;
+			border-radius: $border-radius;
+            &:last-child{
+                justify-self: end;
+            }
+        }
+    }
+
+    &.--bookings{
+        .header,.row,.row-skeleton{
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+        }
+    }
+    &.--vehicles{
+        .header,.row,.row-skeleton{
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+    &.--sessions{
+        margin-bottom: 15px;
+        .header,.row,.row-skeleton{
+            grid-template-columns: 2fr 2fr 1fr;
+        }
+    }
+    &.--members{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        .header,.row,.row-skeleton{
+            grid-template-columns: 40px 30% 1fr 1fr;
+            padding-left: 5px;
+            column-gap: 15px;
+        }
+        .header{
+            grid-template-columns: calc(30% + 55px) 1fr 1fr!important;
+        }
+        .avatar{
+            display: block;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: $border-radius;
+            background-color: $colour-borders-relative;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            box-shadow: inset 0 0 0 2px $colour-borders-relative;
+        }
+    }
+}

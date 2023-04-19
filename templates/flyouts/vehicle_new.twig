@@ -1,0 +1,42 @@
+<div class="flyout" id="flyout-vehicle_new">
+    <div class="header">
+        <span>Add a Vehicle</span>
+        <button class="flyout-close"><i data-feather="x"></i></button>
+    </div>
+    <div class="body">
+    <form class="process-form" id="flyout-form__vehicle-new">
+		<input type="hidden" name="action" value="vehicle-new" />
+		<div class="form-group">
+			<label>Registration</label>
+			<input class="form-control --vehicle-reg" type="text" name="domain" placeholder="AB12CDE" />
+			<div class="form-error"></div>
+			<div class="form-help">Please enter the registration number of your vehicle.</div>
+		</div>
+		<div class="form-group">
+			<label>Manufacturer</label>
+			<input class="form-control" type="text" name="manufacturer" placeholder="E.g. Volvo, BMW, Audi" />
+			<div class="form-error"></div>
+			<div class="form-help">Please enter the manufacturer of your vehicle.</div>
+		</div>
+		<div class="form-group">
+			<label>Model</label>
+			<input class="form-control" type="text" name="model" />
+			<div class="form-error"></div>
+			<div class="form-help">Please enter the model name of your vehicle.</div>
+		</div>
+        <div class="form-group">
+			<label>Fuel Type</label>
+            <select class="form-select" name="fuel_type">
+                <option value="">Please Select</option>
+                <option value="petrol">Petrol</option>
+                <option value="diesel">Diesel</option>
+            </select>
+			<div class="form-error"></div>
+            <div class="form-help">Please select the type of fuel that your vehicle uses.</div>
+		</div>
+        <div class="form-group">
+		    <button type="submit" class="button --primary">Add Vehicle<i data-feather="loader"></i></button>
+        </div>
+	</form>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{% extends "_base.twig" %}
+{% block layout %}
+<div class="structure --settings">
+	{% include 'includes/sidebar.twig' %}
+    <div class="settings-menu">
+		<span>Settings</span>
+        <ul class="--icons">
+            <li><a{% if subMenuSlug == "general" %} class="active"{% endif %} href="/settings/general"><i data-feather="sliders"></i>General</a></li>
+            <li><a{% if subMenuSlug == "members" %} class="active"{% endif %} href="/settings/members"><i data-feather="users"></i>Members</a></li>
+        </ul>
+    </div>
+	<main>
+		{% block main %}{% endblock %}
+	</main>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+<div class="sidebar">
+		<a href="/" class="logo">
+			<img class="logo-light" src="/assets/logo-light.svg" />
+		</a>
+		<ul class="menu">
+			<li><a{% if menuSlug == "bookings" %} class="active"{% endif %} href="/bookings"><span><i data-feather="book-open"></i>Bookings</span></a></li>
+			<li><a{% if menuSlug == "vehicles" %} class="active"{% endif %} href="/vehicles"><span><i data-feather="truck"></i>Vehicles</span></a></li>
+			<li><a{% if menuSlug == "invoices" %} class="active"{% endif %} href="/"><span><i data-feather="file-text"></i>Invoices</span></a></li>
+		</ul>
+		<div class="footer">
+			<a href="/account/general" class="user">
+				<div class="picture" style="background-image: url(https://www.evatar.io/{{customer.avatar_hash}});"></div>
+				<div class="body">
+					<span class="name">{{customer.first_name}} {{customer.last_name}}</span>
+					<span class="email">{{customer.email_address}}</span>
+				</div>
+			</a>
+			{% include 'includes/footer.twig' %}
+		</div>
+	</div>

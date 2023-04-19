@@ -1,0 +1,87 @@
+.swal-modal{
+    border-radius: $border-radius;
+}
+.swal-title{
+    color: $colour-dark;
+    font-family: 'Inter', sans-serif;
+}
+.swal-text{
+    color: $colour-dark;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+.swal-footer{
+	text-align: center;
+}
+
+.swal-button{
+    font-size: 16px;
+	line-height: 1em;
+	font-weight: 500;
+	color: $colour-dark;
+	border-radius: $border-radius;
+	border: 2px solid $colour-borders-relative;
+	background-color: $colour-borders-absolute;
+	outline:none!important;
+	box-shadow: 0px 0px 0px 0px $colour-borders-relative;
+    &::after{
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: $colour-borders-absolute;
+		border-radius: 3px;
+		z-index: 2;
+		opacity: 0;
+	}
+    &:hover{
+		border-color: rgba(black,0.2);
+        background-color: $colour-borders-absolute!important;
+	}
+	&:active{
+		background-color: darken($colour-borders-absolute, 10%)!important;
+	}
+	&:focus{
+		box-shadow: 0px 0px 0px 2px $colour-borders-relative;
+	}
+
+    &.swal-button--confirm{
+        background-color: $colour-primary2;
+		color: white;
+		box-shadow: 0px 0px 0px 0px transparentize($colour-primary2, 0.5);
+        &:hover{
+            background-color: $colour-primary2!important;
+        }
+		&::after{
+			background-color: $colour-primary2;
+		}
+		&:active{
+			background-color: darken($colour-primary2, 10%)!important;
+		}
+		&:focus{
+			box-shadow: 0px 0px 0px 2px transparentize($colour-primary2, 0.5);
+		}
+    }
+
+    &.swal-button--danger{
+        background-color: $colour-danger!important;
+		color: white;
+		box-shadow: 0px 0px 0px 0px transparentize($colour-danger, 0.5)!important;
+        &:hover{
+            background-color: $colour-danger!important;
+        }
+		&::after{
+			background-color: $colour-danger!important;
+		}
+		&:active{
+			background-color: darken($colour-danger, 10%)!important;
+		}
+		&:focus{
+			box-shadow: 0px 0px 0px 2px transparentize($colour-danger, 0.5)!important;
+		}
+    }
+}

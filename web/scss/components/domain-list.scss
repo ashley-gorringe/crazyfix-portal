@@ -1,0 +1,169 @@
+.domain-list{
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+    width: 100%;
+    .item{
+        display: block;
+        position: relative;
+        width: 100%;
+        height: auto;
+        .row{
+            display: grid;
+            position: relative;
+            width: 100%;
+            height: 50px;
+            grid-template-columns: auto 1fr;
+            column-gap: 15px;
+            align-items: center;
+            background-color: $colour-borders-absolute;
+            border-radius: $border-radius;
+            color: inherit;
+            text-decoration: none;
+            padding: 0 15px;
+            &.--icons{
+                grid-template-columns: auto auto 1fr;
+            }
+            span{
+                display: block;
+                position: relative;
+                font-size: 18px;
+                line-height: 1em;
+                padding: 5px 0;
+                &:first-of-type{
+                    font-weight: 600;
+                }
+                &:last-of-type{
+                    text-align: right;
+                }
+            }
+            .icons{
+                display: flex;
+                gap: 5px;
+                svg{
+                    width: 20px;
+                    height: 20px;
+                    &.feather-link{
+                        color: $colour-danger;
+                        stroke-width: 2px;
+                        fill: transparentize($colour-danger, 0.8);
+                    }
+                    &.feather-eye-off{
+                        color: #F6821F;
+                        stroke-width: 2px;
+                        fill: transparentize(#F6821F, 0.8);
+                    }
+                }
+            }
+            &::after{
+                content: '';
+                display: block;
+                position: absolute;
+                width: calc(100% - 4px);
+                height: calc(100% - 4px);
+                top: 2px;
+                left: 2px;
+                border: 2px solid $colour-primary1;
+                border-radius: $border-radius - 2px;
+                opacity: 0;
+            }
+            &:hover::after{
+                opacity: 0.4;
+            }
+            &:active::after{
+                opacity: 1;
+            }
+        }
+
+        .box{
+            display: none;
+            position: relative;
+            width: 100%;
+            background-color: $colour-borders-absolute;
+            border-radius: $border-radius;
+            color: inherit;
+            padding: 15px;
+
+            .data{
+                .attribute{
+                    span{
+                        font-size: 18px;
+                        &:first-child{
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+
+            .issue{
+                display: block;
+                position: relative;
+                margin-top: 15px;
+                padding: 15px 0;
+                min-height: 44px;
+                border-top: 2px solid $colour-borders-relative;
+                svg{
+                    display: block;
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    top: 15px;
+                    left: 0;
+                    &.feather-link{
+                        color: $colour-danger;
+                        stroke-width: 2px;
+                        fill: transparentize($colour-danger, 0.8);
+                    }
+                    &.feather-eye-off{
+                        color: #F6821F;
+                        stroke-width: 2px;
+                        fill: transparentize(#F6821F, 0.8);
+                    }
+                }
+                span{
+                    display: block;
+                    position: relative;
+                    padding-left: 34px;
+                    font-size: 14px;
+                    line-height: 1.2em;
+                    color: lighten($colour-dark, 20%);
+                }
+            }
+
+            .button-group{
+                margin-top: 15px;
+                .button{
+                    margin: 0;
+                    font-size: 15px;
+                    padding: 10px 14px;
+                    &.--icon-left{
+                        padding-left: 40px;
+                        svg{
+                            left: 14px;
+                            height: 18px;
+                            width: 18px;
+                        }
+                    }
+                    &.--icon-right{
+                        padding-right: 40px;
+                        svg{
+                            right: 14px;
+                            height: 18px;
+                            width: 18px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.--active{
+            .row{
+                display: none;
+            }
+            .box{
+                display: block;
+            }
+        }
+    }
+}

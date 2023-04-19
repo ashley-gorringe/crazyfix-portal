@@ -1,0 +1,68 @@
+{% extends "_layout_account.twig" %}
+
+{% set menuSlug = "account" %}
+{% set pageTitle = "Account" %}
+
+{% set subMenuSlug = "security" %}
+
+{% block main %}
+<section>
+    <div class="container --medium">
+        <h1>Security</h1>
+        <p class="lead">Protect your account and keep your information secure.</p>
+    </div>
+</section>
+<section>
+    <form class="process-form page-form">
+        <input type="hidden" name="action" value="account-security" />
+        <dialog class="form-actions">
+            <div class="form-actions-container">
+                <span>You have unsaved changes.</span>
+                <button type="button" class="button --quiet page-form-cancel-button">Cancel</button>
+                <button type="submit" class="button --primary">Save Changes<i data-feather="loader"></i></button>
+            </div>
+        </dialog>
+        <div class="form-section">
+            <h2>Password</h2>
+            <p>Choose a strong and unique password to keep your account secure.</p>
+            <div class="form-group">
+                <label for="name">Password</label>
+                <input type="password" name="password" class="form-control --auto-width" />
+                <div class="form-error"></div>
+                <div class="form-help">
+                    Make sure it's at least 8 characters long and includes a mix of uppercase and lowercase letters, numbers, and symbols.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Re-enter Password</label>
+                <input type="password" name="re_password" class="form-control --auto-width" />
+                <div class="form-error"></div>
+                <div class="form-help">
+                    To confirm your new password, please re-enter it here. Double-check to make sure both fields match before saving your changes.
+                </div>
+            </div>
+        </div>
+        <div class="form-section">
+            <h2>Sessions</h2>
+            <p>This section shows you all the devices and locations where you're currently logged in. From here, you can log out of any active sessions that you no longer need or that you suspect may be unauthorized. <strong>Click on a session below to close it.</strong></p>
+            <div class="table --sessions">
+                <div class="header">
+                    <span>Device</span>
+                    <span>Started</span>
+                    <span>Last Active</span>
+                </div>
+                <div class="body">
+                {% for session in sessions %}
+                    <a class="row session-row" href="#" data-token="{{session.token}}" data-device="{% if session.current_device %}(This Device) {% endif %}{{session.device_info}}">
+                        <span>{% if session.current_device %}(This Device) {% endif %}{{session.device_info}}</span>
+                        <span>{{session.created_datetime}}</span>
+                        <span>{{session.latest_activity}}</span>
+                    </a>
+                {% endfor %}
+                </div>
+            </div>
+            <button type="button" class="button --danger session-all-button">Close all sessions</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

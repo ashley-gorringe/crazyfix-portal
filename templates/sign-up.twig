@@ -1,0 +1,78 @@
+{% extends "_layout_login.twig" %}
+
+{% set menuSlug = "register" %}
+{% set pageTitle = "Register" %}
+
+{% block main %}
+<div class="login-box">
+	<h3>Sign up for CrazyFix Portal</h3>
+	<p>Looks like you're new here, <br>Let's get started!</p>
+	
+	<form class="process-form">
+		<input type="hidden" name="action" value="sign-up" />
+		<div class="form-group">
+			<label>Email Address</label>
+			<input class="form-control" type="email" name="email" placeholder="example@email.com" value="{{email}}" />
+			<div class="form-error"></div>
+		</div>
+		<div class="form-group">
+			<label>Phone Number</label>
+			<input class="form-control" type="text" name="phone" />
+			<div class="form-error"></div>
+		</div>
+		<div class="divider"></div>
+		<div class="form-group">
+			<label>Title</label>
+			<select class="form-select" name="title">
+                <option value="">Please Select</option>
+                <option value="mr">Mr</option>
+                <option value="mrs">Mrs</option>
+                <option value="miss">Miss</option>
+                <option value="mx">Mx</option>
+                <option value="dr">Dr</option>
+                <option value="prof">Prof</option>
+            </select>
+			<div class="form-error"></div>
+		</div>
+		<div class="form-group">
+			<label>First Name</label>
+			<input class="form-control" type="text" name="first_name" />
+			<div class="form-error"></div>
+		</div>
+		<div class="form-group">
+			<label>Last Name</label>
+			<input class="form-control" type="text" name="last_name" />
+			<div class="form-error"></div>
+		</div>
+		<div class="divider"></div>
+		<div class="form-group">
+			<label>Address Line 1</label>
+			<input class="form-control" type="text" name="address_line_1" />
+			<div class="form-error"></div>
+		</div>
+		<div class="form-group">
+			<label>Address Line 2</label>
+			<input class="form-control" type="text" name="address_line_2" />
+			<div class="form-error"></div>
+		</div>
+		<div class="form-group">
+			<label>Postcode</label>
+			<input class="form-control" type="text" name="postcode" />
+			<div class="form-error"></div>
+		</div>
+		<div class="divider"></div>
+		<div class="form-group">
+			<label>Password</label>
+			<input class="form-control" type="password" name="password" />
+			<div class="form-error"></div>
+		</div>
+		<div class="form-group">
+			<label>Re-enter Password</label>
+			<input class="form-control" type="password" name="re_password" />
+			<div class="form-error"></div>
+		</div>
+		<button type="submit" class="button --primary --fw">Sign up<i data-feather="loader"></i></button>
+		<a href="/welcome" class="button --quiet --fw">Go Back</a>
+	</form>
+</div>
+{% endblock %}

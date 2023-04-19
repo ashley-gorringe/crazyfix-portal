@@ -1,0 +1,43 @@
+{% extends "_layout_dashboard.twig" %}
+
+{% set menuSlug = "vehicles" %}
+{% set pageTitle = "Vehicles" %}
+
+{% block main %}
+<section>
+    <div class="container">
+        <h1>Vehicles</h1>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <a href="#" class="button --primary --icon-left flyout-vehicle_new">Add Vehicle<i data-feather="plus-circle"></i></a>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="table --vehicles">
+            <div class="header">
+                <span>Registration</span>
+                <span>Make &amp; Model</span>
+                <span>Fuel Type</span>
+            </div>
+            <div class="body">
+            <a class="row" href="#">
+                <span>LN16 XAB</span>
+                <span>Volvo S60</span>
+                <span>Diesel</span>
+            </a>
+            <a class="row" href="#">
+                <span>KR18 AVW</span>
+                <span>Volvo V40</span>
+                <span>Petrol</span>
+            </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% if user.level <= 2 %}
+{% include 'flyouts/vehicle_new.twig' %}
+{% endif %}
+{% endblock %}

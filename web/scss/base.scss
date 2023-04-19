@@ -1,0 +1,225 @@
+$colour-primary1: #222222;
+$colour-primary2: #222222;
+$colour-dark: #222222;
+$colour-white: #FFFFFF;
+$colour-borders-absolute: #EDEDED;
+$colour-borders-relative: rgba(black,0.07);
+$colour-text-muted1: #808080;
+$colour-text-muted2: #9E9E9E;
+$colour-warning: #FFB800;
+$colour-danger: #EB1A1A;
+
+$border-radius: 5px;
+
+@import 'reboot';
+
+@import 'structure';
+@import 'typography';
+@import 'controls';
+@import 'sweetalert';
+
+@import 'components/flyout';
+@import 'components/grid';
+@import 'components/table';
+@import 'components/card';
+@import 'components/domain-list';
+@import 'components/activity';
+@import 'components/team-members';
+
+*{
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#form-sign-in, #sign-up-join, #sign-up-create, #sign-up-solo{
+	display: none;
+}
+
+.index{
+	.table,.grid{
+		display: none;
+	}
+}
+
+#client-input{
+	display: block;
+}
+#client-selected{
+	display: none;
+}
+.client-options{
+	display: none;
+	position: relative;
+	margin-top: 15px;
+	border: 2px solid $colour-borders-absolute;
+	padding: 4px;
+	border-radius: $border-radius;
+	&.--active{
+		display: block;
+	}
+	&.--invalid{
+		border-color: $colour-danger;
+	}
+	.button{
+		margin: 0;
+        font-size: 16px;
+        padding: 12px 22px;
+		span{
+			position: relative;
+			color: $colour-primary2;
+			margin-right: 24px;
+			&::after{
+				content: '';
+				display: block;
+				position: absolute;
+				width: 8px;
+				height: 2px;
+				background-color: $colour-text-muted2;
+				top: calc(50% - 1px);
+				right: -18px;
+			}
+		}
+	}
+	.client-select__heading{
+		display: block;
+		position: relative;
+		font-size: 14px;
+		line-height: 1.1em;
+		font-weight: 600;
+		margin-left: 10px;
+		margin-top: 15px;
+		margin-bottom: 3px;
+		color: $colour-text-muted1;
+	}
+	.client-select{
+		display: grid;
+		position: relative;
+		row-gap: 4px;
+		padding: 3px 0;
+		button{
+			display: block;
+			position: relative;
+			border: none;
+			background-color: transparent;
+			font-size: 18px;
+			line-height: 1em;
+			font-weight: 400;
+			text-align: left;
+			padding: 10px 20px;
+			z-index: 1;
+			outline:none!important;
+			box-shadow: 0px 0px 0px 0px $colour-borders-relative;
+			border-radius: $border-radius;
+			transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+			&::after{
+				content: '';
+				display: block;
+				position: absolute;
+				bottom: -3px;
+				left: 10px;
+				height: 2px;
+				width: calc(100% - 20px);
+				background-color: $colour-borders-absolute;
+				z-index: -2;
+			}
+			&:last-child::after{
+				display: none;
+			}
+			&::before{
+				content: '';
+				display: none;
+				position: absolute;
+				width: 100%;
+				height: calc(100% + 6px);
+				background-color: $colour-borders-absolute;
+				top: -3px;
+				left: 0;
+				z-index: -1;
+				border-radius: $border-radius;
+			}
+			&:hover::before{
+				display: block;
+			}
+			&:focus{
+				box-shadow: 0px 0px 0px 2px transparentize($colour-primary2, 0.5);
+			}
+		}
+	}
+}
+.client-selected{
+	display: block;
+	position: relative;
+	border: 2px solid $colour-borders-relative;
+	background-color: lighten($colour-borders-absolute,2%);
+	padding: 15px;
+	border-radius: $border-radius;
+	&.--invalid{
+		border-color: $colour-danger;
+	}
+	.client-selected-cancel{
+		display: block;
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+		transform: translate(0,-50%);
+        color: $colour-dark;
+	    border-radius: $border-radius;
+	    border: 2px solid $colour-borders-relative;
+	    background-color: $colour-borders-relative;
+	    outline:none!important;
+	    box-shadow: 0px 0px 0px 0px $colour-borders-relative;
+	    transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+        svg{
+            display: block;
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            top: calc(50% - 9px);
+            left: calc(50% - 9px);
+        }
+        &:hover{
+            border-color: rgba(black,0.2);
+            color: inherit;
+        }
+        &:active{
+            background-color: darken($colour-borders-absolute, 10%);
+        }
+        &:focus{
+            box-shadow: 0px 0px 0px 2px $colour-borders-relative;
+        }
+	}
+	.type{
+		display: block;
+		position: relative;
+		font-size: 14px;
+		line-height: 1em;
+		font-weight: 600;
+		color: $colour-text-muted1;
+	}
+	.value{
+		display: block;
+		position: relative;
+		font-size: 18px;
+		line-height: 1em;
+		font-weight: 400;
+		margin-top: 10px;
+	}
+}
+
+.index-empty{
+	display: block;
+	position: relative;
+	padding: 30px;
+	width: 100%;
+	background-color: transparentize($colour-borders-absolute,0.5);
+	border-radius: $border-radius;
+	span{
+		display: block;
+		position: relative;
+		width: 100%;
+		text-align: center;
+		color: $colour-text-muted1;
+	}
+}

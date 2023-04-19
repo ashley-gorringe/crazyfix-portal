@@ -1,0 +1,13 @@
+{% extends "_base.twig" %}
+{% block layout %}
+<div class="structure-login">
+	<main class="login">
+		<a href="/" class="logo">
+			<img class="logo-light" src="/assets/logo-light.svg" />
+		</a>
+
+		{% block main %}{% endblock %}
+		{% include 'includes/footer.twig' %}
+	</main>
+</div>
+{% endblock %}

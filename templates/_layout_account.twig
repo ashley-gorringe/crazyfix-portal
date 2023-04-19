@@ -1,0 +1,20 @@
+{% extends "_base.twig" %}
+{% block layout %}
+<div class="structure --settings">
+	{% include 'includes/sidebar.twig' %}
+    <div class="settings-menu">
+		<span>Account</span>
+        <ul class="--icons">
+            <li><a{% if subMenuSlug == "general" %} class="active"{% endif %} href="/account/general"><i data-feather="user"></i>General</a></li>
+            <li><a{% if subMenuSlug == "security" %} class="active"{% endif %} href="/account/security"><i data-feather="shield"></i>Security</a></li>
+            <!--
+            <li><a{% if subMenuSlug == "notifications" %} class="active"{% endif %} href="/account/notifications"><i data-feather="bell"></i>Notifications</a></li>
+            -->
+            <li><a href="#" id="sign-out-link"><i data-feather="log-out"></i>Sign out</a></li>
+        </ul>
+    </div>
+	<main>
+		{% block main %}{% endblock %}
+	</main>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "_layout_dashboard.twig" %}
+
+{% set menuSlug = "bookings" %}
+{% set pageTitle = "Bookings" %}
+
+{% block main %}
+<section>
+    <div class="container">
+        <h1>Bookings</h1>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <a href="#" class="button --primary --icon-left">Create Booking<i data-feather="plus-circle"></i></a>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="table --bookings">
+            <div class="header">
+                <span>Booking No.</span>
+                <span>Vehicle</span>
+                <span>Created Date</span>
+                <span>Service Date</span>
+                <span>Quote</span>
+            </div>
+            <div class="body">
+            <a class="row" href="/sites/3a9c0bd567430596c624389aabc2e5cc">
+                
+                <span>marble2marvel.co.uk</span>
+                <span>Marble 2 Marvel</span>
+                <span>London 02</span>
+                <span>1 day ago</span>
+                <span>1 day ago</span>
+            </a>
+            
+            <a class="row" href="/sites/98e5fc8a9f888702be4c21534e1d3fac">
+                
+                <span>cambergetaways.co.uk</span>
+                <span>UKG Group</span>
+                <span>London 02</span>
+                <span>1 day ago</span>
+                <span>1 day ago</span>
+            </a>
+            
+            <a class="row --issue-d" href="/sites/f385d91a0d622fc94b888e7c8c1319e8">
+                
+                <div class="issues">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                </div>
+                
+                <span>questcottages.co.uk</span>
+                <span>UKG Group</span>
+                <span>London 02</span>
+                <span>1 day ago</span>
+                <span>1 day ago</span>
+            </a>
+            
+            <a class="row" href="/sites/69130a6dd71967b7d5f50044c3308230">
+                
+                <span>ukg.group</span>
+                <span>UKG Group</span>
+                <span>London 02</span>
+                <span>1 day ago</span>
+                <span>1 day ago</span>
+            </a>
+            
+            <a class="row" href="/sites/cd910e086c2b39eadf65f200082cf0ce">
+                
+                <span>mattmaurice.co.uk</span>
+                <span>Matt Maurice Event Music</span>
+                <span>London 02</span>
+                <span>1 day ago</span>
+                <span>1 day ago</span>
+            </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "_layout_dashboard.twig" %}
+
+{% set menuSlug = "servers" %}
+{% set pageTitle = "Servers" %}
+{% set loadIndexServer = true %}
+
+{% block main %}
+{% include 'includes/top-bar.twig' %}
+
+<section>
+    <div class="container">
+        <h1>Servers</h1>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="data-controls">
+            <div class="left">
+            </div>
+            <div class="right">
+                <div class="layout-select">
+                    <button class="layout-select__list"><i data-feather="list"></i></button>
+                    <button class="layout-select__grid"><i data-feather="grid"></i></button>
+                </div>
+                {% if user.level <= 1 %}
+                <a href="#" class="flyout-server_new button --icon-left">New Server<i data-feather="plus-circle"></i></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="index">
+            <div class="grid">
+            </div>
+            <div class="table --servers">
+                <div class="header">
+                    <span>Name</span>
+                    <span>IP Address</span>
+                    <span>Provider</span>
+                    <span>Sites</span>
+                </div>
+                <div class="body">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'flyouts/site_new.twig' %}
+{% if user.level <= 1 %}
+{% include 'flyouts/server_new.twig' %}
+{% endif %}
+{% endblock %}

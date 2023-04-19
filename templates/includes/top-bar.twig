@@ -1,0 +1,11 @@
+<div class="top-bar{% if user.level <= 2 %} --button{% endif %}">
+	<div class="container">
+		<div class="search-bar">
+			<input type="search" placeholder="Search for Sites, Clients or Domains" autofocus>
+			<i data-feather="search"></i>
+		</div>
+		{% if user.level <= 2 %}
+		<a href="#" class="flyout-site_new"><span><i data-feather="plus-circle"></i>New Site</a>
+		{% endif %}
+	</div>
+</div>

@@ -1,0 +1,42 @@
+<div class="flyout" id="flyout-server_edit">
+    <div class="header">
+        <span>Edit Server</span>
+        <button class="flyout-close"><i data-feather="x"></i></button>
+    </div>
+    <div class="body">
+    <form class="process-form" id="flyout-form__server-edit">
+		<input type="hidden" name="action" value="server-edit" />
+		<input type="hidden" name="server_slug" value="{{server.server_slug}}" />
+		<div class="form-group">
+			<label>Server Name</label>
+			<input class="form-control" type="text" name="server_name" placeholder="E.g. London VPS 01" value="{{server.server_name}}" />
+            <div class="form-error"></div>
+            <div class="form-help">The name of the Server, make it something recognisible.</div>
+		</div>
+        <div class="form-group">
+			<label>IP Address</label>
+			<input class="form-control" type="text" name="ip_address" placeholder="E.g. 123.456.789.123" value="{{server.ip_address}}" />
+            <div class="form-error"></div>
+            <div class="form-help">The IP Address of the Server. This will be used to check that Domains are pointing to the right place.</div>
+		</div>
+        <div class="form-group">
+			<label>Provider</label>
+			<input class="form-control" type="text" name="provider" placeholder="E.g. DigitalOcean" value="{{server.provider}}" />
+            <div class="form-error"></div>
+            <div class="form-help">Where is the Server hosted? The name of the cloud hosting provider for example.</div>
+		</div>
+        <div class="form-group">
+			<label>Control Panel Link<span>(Optional)</span></label>
+			<input class="form-control" type="text" name="login_link" placeholder="E.g. https://server-control-panel.com/login" value="{{server.login_link}}" />
+            <div class="form-error"></div>
+            <div class="form-help">Link to the control panel login page for this server. Ideally from here you would be able to manage all the Sites on the server.</div>
+		</div>
+        <div class="form-group">
+            <div class="button-group">
+                <button type="submit" class="button --primary">Save Changes<i data-feather="loader"></i></button>
+                <button type="button" class="button flyout-close">Cancel<i data-feather="loader"></i></button>
+            </div>
+        </div>
+	</form>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+{% extends "_layout_settings.twig" %}
+
+{% set menuSlug = "settings" %}
+{% set pageTitle = "Settings" %}
+
+{% set subMenuSlug = "members" %}
+
+{% block main %}
+<section>
+    <div class="container --medium">
+        <h1>Members</h1>
+        <p class="lead">Manage your Team's members.</p>
+        <button class="button --primary --icon-left" type="button"><i data-feather="user-plus"></i>Invite Member</button>
+        <div class="team-members">
+            {% for member in members %}
+            {% if member.level == 0 %}
+                {% set level = "Owner" %}
+            {% elseif member.level == 1 %}
+                {% set level = "Admin" %}
+            {% elseif member.level == 2 %}
+                {% set level = "Editor" %}
+            {% elseif member.level == 3 %}
+                {% set level = "Viewer" %}
+            {% endif %}
+            <div class="item" data-user="{{member.user_id}}" data-name="{{member.name}}">
+                <a href="#" class="row">
+                    <div class="avatar" style="background-image:url(https://www.evatar.io/{{member.avatar_hash}})"></div>
+                    <span>{{member.name}}</span>
+                    <span>{{member.email}}</span>
+                    <span class="level_label">{{level}}</span>
+                </a>
+                <div class="box">
+                    <div class="details">
+                        <div class="avatar" style="background-image:url(https://www.evatar.io/{{member.avatar_hash}})"></div>
+                        <span>{{member.name}}</span>
+                        <span>{{member.email}}</span>
+                    </div>
+                    <div class="actions">
+                        {% if member.level == 0 %}
+                        <p><em>The team owner cannot be edited.</em></p>
+                        {% elseif member.user_id == user.user_id %}
+                        <p><em>You can't modify yourself.</em></p>
+                        {% else %}
+                        <div class="level-select">
+                            <button class="{% if member.level == 1 %}active{% endif %}" data-level="admin">Admin</button>
+                            <button class="{% if member.level == 2 %}active{% endif %}" data-level="editor">Editor</button>
+                            <button class="{% if member.level == 3 %}active{% endif %}" data-level="viewer">Viewer</button>
+                        </div>
+                        {% if user.level == 0 %}
+                        <a href="#" class="button member-owner-button --icon-left">Transfer Ownership<i data-feather="repeat"></i></a>
+                        {% endif %}
+                        <a href="#" class="button member-remove-button --danger --icon-left">Remove<i data-feather="trash-2"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

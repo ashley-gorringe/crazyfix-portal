@@ -1,0 +1,107 @@
+.flyout-overlay{
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: 600;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: 0.3s;
+    pointer-events: none;
+    &.active{
+        visibility: visible;
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+.flyout{
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%;
+    max-width: 800px;
+    min-width: 600px;
+    height: 100%;
+    background-color: white;
+    z-index: 700;
+    transform: translate(100%,0);
+    visibility: hidden;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    overflow-y: scroll;
+    &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        background-color: $colour-borders-relative;
+        top: 0;
+        left: -2px;
+    }
+    &.active{
+        visibility: visible;
+        transform: translate(0,0);
+    }
+    .header{
+        display: block;
+        position: relative;
+        padding: 50px;
+        padding-right: 110px;
+        span{
+            display: block;
+            position: relative;
+            font-size: 26px;
+            line-height: 1em;
+            font-weight: 700;
+            min-width: 0;
+			overflow: hidden;
+		    text-overflow: ellipsis;
+			white-space: nowrap;
+            padding: 5px 0;
+        }
+        .flyout-close{
+            display: block;
+            position: absolute;
+            top: calc(50% - 20px);
+            right: 50px;
+            width: 40px;
+            height: 40px;
+            color: $colour-dark;
+	        border-radius: $border-radius;
+	        border: 2px solid $colour-borders-relative;
+	        background-color: $colour-borders-absolute;
+	        outline:none!important;
+	        box-shadow: 0px 0px 0px 0px $colour-borders-relative;
+	        transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+            svg{
+                display: block;
+                position: absolute;
+                height: 24px;
+                width: 24px;
+                top: calc(50% - 12px);
+                left: calc(50% - 12px);
+            }
+            &:hover{
+                border-color: rgba(black,0.2);
+                color: inherit;
+            }
+            &:active{
+                background-color: darken($colour-borders-absolute, 10%);
+            }
+            &:focus{
+                box-shadow: 0px 0px 0px 2px $colour-borders-relative;
+            }
+        }
+    }
+    .body{
+        display: block;
+        position: relative;
+        padding: 50px;
+        padding-top: 0;
+    }
+}
