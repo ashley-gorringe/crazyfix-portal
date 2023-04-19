@@ -1,24 +1,5 @@
 <?php
 use Steampixel\Route;
-/*
-$GLOBALS['database']->insert('server',[
-	'team_id'=>2,
-	'server_name'=>'Test',
-]);
-insertDBSlug('server');
-*/
-
-/*
-$domain = 'test earh aehaehaehe rah';
-die(var_dump(validateDomain($domain)));
-*/
-//$RecordsNS = $DNS->getRecords('serverbook.app', 'NS')[0];
-//$RecordsA = $DNS->getRecords('serverbook.app', 'A')[0];
-//die(var_dump($RecordsNS->target()));
-//die(var_dump($RecordsA->ip()));
-
-
-//die(var_dump(getDNSRecords('splycd.co.uk')));
 
 Route::add('/welcome', function() {
 	checkSignedIn();
@@ -42,24 +23,7 @@ Route::add('/account/general', function() {
 });
 Route::add('/account/security', function() {
 	checkAuth();
-	$sessions = $GLOBALS['database']->select('user_token','*',[
-		'user_id'=>$_SESSION['user_id'],
-		'ORDER'=>['created_datetime'=>'DESC'],
-	]);
-	foreach ($sessions as $key => $session){
-		if($session['token'] === $_SESSION['user_token']){
-			$sessions[$key]['current_device'] = true;
-		}else{
-			$sessions[$key]['current_device'] = false;
-		}
-		$sessions[$key]['created_datetime'] = date('jS \o\f M Y - G:i:s',strtotime($session['created_datetime']));
-		$sessions[$key]['latest_activity'] = timeago(strtotime($session['latest_activity']));
-	}
-	echo $GLOBALS['twig']->render('account_security.twig',['user'=>$_SESSION['user'],'team'=>$_SESSION['team'],'sessions'=>$sessions]);
-});
-Route::add('/account/notifications', function() {
-	checkAuth();
-	echo $GLOBALS['twig']->render('account_notifications.twig',['user'=>$_SESSION['user'],'team'=>$_SESSION['team']]);
+	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/routes/account_security.php';
 });
 
 Route::add('/bookings', function() {
@@ -78,20 +42,6 @@ Route::add('/vehicles', function() {
 
 Route::add('/sign-out', function() {
 	resetAuth();
-});
-
-
-Route::add('/api/server-list.json', function() {
-	checkAuth();
-	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/api/server_list.php';
-});
-Route::add('/api/site-list.json', function() {
-	checkAuth();
-	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/api/site_list.php';
-});
-Route::add('/api/client-search.json', function() {
-	checkAuth();
-	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/api/client_search.php';
 });
 
 Route::pathNotFound(function() {

@@ -63,21 +63,55 @@ if(!$submitValid){
 	echo json_encode($response);
 	exit;
 }else{
-    $database->insert('vehicle',[
+
+    //Check if vehicle already exists
+    $vehicleCount = $database->count('vehicle',[
         'registration'=>$registration,
-        'make'=>$manufacturer,
-        'model'=>$model,
     ]);
-    $vehicle_id = $database->id();
+    if($vehicleCount > 0){
+        //Get vehicle ID
+        $vehicle_id = $database->get('vehicle','vehicle_id',[
+            'registration'=>$registration,
+        ]);
+        //Check if vehicle is already linked to customer
+        $customerVehicleCount = $database->count('customer_vehicle',[
+            'AND'=>[
+                'customer_id'=>$_SESSION['customer_id'],
+                'vehicle_id'=>$vehicle_id,
+            ]
+        ]);
+        if($customerVehicleCount > 0){
+            $response->status = 'error';
+            $response->message = 'This vehicle is already linked to your account.';
+            echo json_encode($response);
+            exit;
+        }else{
+            $database->insert('customer_vehicle',[
+                'customer_id'=>$_SESSION['customer_id'],
+                'vehicle_id'=>$vehicle_id,
+            ]);
+            $response->status = 'success';
+            $response->successRedirect = '/vehicles/';
+            echo json_encode($response);
+            exit;
+        }
+    }else{
+        $database->insert('vehicle',[
+            'registration'=>$registration,
+            'make'=>$manufacturer,
+            'model'=>$model,
+        ]);
+        $vehicle_id = $database->id();
+    
+        $database->insert('customer_vehicle',[
+            'customer_id'=>$_SESSION['customer_id'],
+            'vehicle_id'=>$vehicle_id,
+        ]);
 
-    $database->insert('customer_vehicle',[
-        'customer_id'=>$_SESSION['customer_id'],
-        'vehicle_id'=>$vehicle_id,
-    ]);
-
-    $response->status = 'success';
-	$response->successRedirect = '/vehicles/';
-	echo json_encode($response);
-	exit;
+        $response->status = 'success';
+        $response->successRedirect = '/vehicles/';
+        echo json_encode($response);
+        exit;
+    }
 }
 ?>

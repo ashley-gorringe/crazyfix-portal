@@ -31,8 +31,8 @@ $TLD_LIST = Rules::fromPath('https://raw.githubusercontent.com/publicsuffix/list
 use Spatie\Dns\Dns;
 $DNS = new Dns();
 
-if(isset($_COOKIE['user_token'])){
-    $_SESSION['user_token'] = $_COOKIE['user_token'];
+if(isset($_COOKIE['login_token'])){
+    $_SESSION['login_token'] = $_COOKIE['login_token'];
 }
 
 date_default_timezone_set('Europe/London');

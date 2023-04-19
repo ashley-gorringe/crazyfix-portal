@@ -16,6 +16,7 @@
 </section>
 <section>
     <div class="container">
+    {% if vehicles %}
         <div class="table --vehicles">
             <div class="header">
                 <span>Make &amp; Model</span>
@@ -30,6 +31,11 @@
             {% endfor %}
             </div>
         </div>
+    {% else %}
+        <div class="index-empty">
+            <span>Nothing to see here...</span>
+        </div>
+    {% endif %}
     </div>
 </section>
 {% if user.level <= 2 %}
