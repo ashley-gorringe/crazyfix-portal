@@ -371,6 +371,33 @@
 				margin-top: 10px;
 			}
 		}
+
+		&.--dark{
+			background-color: $colour-dark;
+			.menu li a{
+				span{
+					color: white;
+					svg{
+						color: darken(white, 50%);
+					}
+					
+				}
+				&:hover span{
+					background-color: darken(white, 80%);
+				}
+				&.active span{
+					background-color: darken(white, 80%);
+					svg{
+						color: white;
+					}
+				}
+			}
+			.links li a{
+				&:hover{
+					background-color: darken(white, 80%);
+				}
+			}
+		}
 	}
 	.sidebar-slim{
 		display: none;

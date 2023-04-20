@@ -108,7 +108,7 @@
 
     &.--bookings{
         .header,.row,.row-skeleton{
-            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
         }
     }
     &.--vehicles{
@@ -116,34 +116,9 @@
             grid-template-columns: 1fr 3fr;
         }
     }
-    &.--sessions{
-        margin-bottom: 15px;
+    &.--services{
         .header,.row,.row-skeleton{
-            grid-template-columns: 2fr 2fr 1fr;
-        }
-    }
-    &.--members{
-        margin-top: 30px;
-        margin-bottom: 30px;
-        .header,.row,.row-skeleton{
-            grid-template-columns: 40px 30% 1fr 1fr;
-            padding-left: 5px;
-            column-gap: 15px;
-        }
-        .header{
-            grid-template-columns: calc(30% + 55px) 1fr 1fr!important;
-        }
-        .avatar{
-            display: block;
-            position: relative;
-            width: 40px;
-            height: 40px;
-            border-radius: $border-radius;
-            background-color: $colour-borders-relative;
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            box-shadow: inset 0 0 0 2px $colour-borders-relative;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         }
     }
 }

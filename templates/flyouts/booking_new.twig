@@ -1,0 +1,31 @@
+<div class="flyout" id="flyout-booking_new">
+    <div class="header">
+        <span>Create a Booking</span>
+        <button class="flyout-close"><i data-feather="x"></i></button>
+    </div>
+    <div class="body">
+    <form class="process-form" id="flyout-form__booking-new">
+		<input type="hidden" name="action" value="booking-new" />
+		<div class="form-group">
+			<label>Vehicle</label>
+			<select class="form-select" name="vehicle">
+                <option value="">Please Select</option>
+				{% for vehicle in vehicles %}
+					<option value="{{ vehicle.vehicle_id }}">{{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.registration }})</option>
+				{% endfor %}
+            </select>
+			<div class="form-error"></div>
+			<div class="form-help">Please select the vehicle that you'd like to book in.</div>
+		</div>
+		<div class="form-group">
+			<label>Service Date</label>
+			<input class="form-control service_date_picker" type="text" name="service_date" />
+			<div class="form-error"></div>
+			<div class="form-help">When would you like your service to take place.</div>
+		</div>
+        <div class="form-group">
+		    <button type="submit" class="button --primary">Create Booking<i data-feather="loader"></i></button>
+        </div>
+	</form>
+    </div>
+</div>

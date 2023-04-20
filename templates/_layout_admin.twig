@@ -1,0 +1,10 @@
+{% extends "_base.twig" %}
+{% block layout %}
+<div class="structure">
+	{% include 'includes/sidebar_admin.twig' %}
+	<main>
+		{% block main %}{% endblock %}
+		<div class="flyout-overlay"></div>
+	</main>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<div class="sidebar --dark">
+    <a href="/admin" class="logo">
+        <img class="logo-light" src="/assets/logo-dark.svg" />
+    </a>
+    <ul class="menu">
+        <li><a{% if menuSlug == "services" %} class="active"{% endif %} href="/admin/services"><span><i data-feather="book-open"></i>Services</span></a></li>
+        <li><a{% if menuSlug == "vehicles" %} class="active"{% endif %} href="/admin/vehicles"><span><i data-feather="truck"></i>Vehicles</span></a></li>
+    </ul>
+    <div class="footer">
+        {% include 'includes/footer.twig' %}
+    </div>
+</div>

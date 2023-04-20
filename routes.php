@@ -30,10 +30,6 @@ Route::add('/bookings', function() {
 	checkAuth();
 	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/routes/booking_index.php';
 });
-Route::add('/bookings/([0-9a-zA-Z]*)', function($slug) {
-	checkAuth();
-	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/routes/booking_single.php';
-});
 
 Route::add('/vehicles', function() {
 	checkAuth();
@@ -42,6 +38,13 @@ Route::add('/vehicles', function() {
 
 Route::add('/sign-out', function() {
 	resetAuth();
+});
+
+Route::add('/admin', function() {
+	header('Location: /admin/services');
+});
+Route::add('/admin/services', function() {
+	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/routes/admin_services.php';
 });
 
 Route::pathNotFound(function() {

@@ -1,0 +1,43 @@
+{% extends "_layout_admin.twig" %}
+
+{% set menuSlug = "services" %}
+{% set pageTitle = "Services" %}
+
+{% block main %}
+<section>
+    <div class="container">
+        <h1>Services</h1>
+    </div>
+</section>
+<section>
+    <div class="container">
+    {% if services %}
+        <div class="table --services">
+            <div class="header">
+                <span>Service No.</span>
+                <span>Customer</span>
+                <span>Vehicle</span>
+                <span>Service Date</span>
+                <span>Complete Date</span>
+            </div>
+            <div class="body">
+            {% for service in services %}
+                <a class="row" href="/admin/services/{{service.service_id}}">
+                    <span>{{service.service_id}}</span>
+                    <span>{{service.title}} {{service.first_name}} {{service.last_name}}</span>
+                    <span>{{service.make}} {{service.model}} ({{service.registration}})</span>
+                    <span>{{service.start_date}}</span>
+                    <span>{{service.complete_date}}</span>
+                </a>
+            {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="index-empty">
+            <span>Nothing to see here...</span>
+        </div>
+    {% endif %}
+    </div>
+</section>
+{% include 'flyouts/booking_new.twig' %}
+{% endblock %}

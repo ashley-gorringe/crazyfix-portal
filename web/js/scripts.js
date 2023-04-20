@@ -1,14 +1,21 @@
 feather.replace();
 
-/*
-$(window).on("scroll", function() {
-    if($(window).scrollTop() > 100){
-        $(".top-bar").addClass("--scrolled");
-    }else if($(window).scrollTop() > 30){
-        $(".top-bar").removeClass("--scrolled");
+$(".service_date_picker").flatpickr({
+	minDate: "today",
+	altInput: true,
+    altFormat: "F j Y",
+    dateFormat: "Y-m-d",
+	"disable": [
+        function(date) {
+            // return true to disable
+            return (date.getDay() === 0 || date.getDay() === 6);
+
+        }
+    ],
+    "locale": {
+        "firstDayOfWeek": 1 // start week on Monday
     }
 });
-*/
 
 $('.sidebar-slim').on('mouseenter', function(event) {
     event.preventDefault();
@@ -322,40 +329,19 @@ $('.flyout-site_new').click(function(event){
 $('.flyout-vehicle_new').click(function(event){
 	event.preventDefault();
 	$('#flyout-form__vehicle_new').trigger("reset");
-		$('#flyout-form__vehicle_new').find('.form-control').removeClass( "--invalid" );
-		$('#flyout-form__vehicle_new').find('.form-select').removeClass( "--invalid" );
+	$('#flyout-form__vehicle_new').find('.form-control').removeClass( "--invalid" );
+	$('#flyout-form__vehicle_new').find('.form-select').removeClass( "--invalid" );
 
-		$('#flyout-vehicle_new').addClass('active');
-		$('.flyout-overlay').addClass('active');
-});
-$('.flyout-server_new').click(function(event){
-	event.preventDefault();
-
-	$('#flyout-form__server-new').trigger("reset");
-	$('#flyout-form__server-new').find('.form-control').removeClass( "--invalid" );
-	$('#flyout-form__server-new').find('.form-select').removeClass( "--invalid" );
-
-	$('#flyout-server_new').addClass('active');
+	$('#flyout-vehicle_new').addClass('active');
 	$('.flyout-overlay').addClass('active');
 });
-$('.flyout-server_edit').click(function(event){
+$('.flyout-booking_new').click(function(event){
 	event.preventDefault();
+	$('#flyout-form__booking_new').trigger("reset");
+	$('#flyout-form__booking_new').find('.form-control').removeClass( "--invalid" );
+	$('#flyout-form__booking_new').find('.form-select').removeClass( "--invalid" );
 
-	$('#flyout-form__server-edit').trigger("reset");
-	$('#flyout-form__server-edit').find('.form-control').removeClass( "--invalid" );
-	$('#flyout-form__server-edit').find('.form-select').removeClass( "--invalid" );
-
-	$('#flyout-server_edit').addClass('active');
-	$('.flyout-overlay').addClass('active');
-});
-$('.flyout-domain_new').click(function(event){
-	event.preventDefault();
-
-	$('#flyout-form__domain-new').trigger("reset");
-	$('#flyout-form__domain-new').find('.form-control').removeClass( "--invalid" );
-	$('#flyout-form__domain-new').find('.form-select').removeClass( "--invalid" );
-
-	$('#flyout-domain_new').addClass('active');
+	$('#flyout-booking_new').addClass('active');
 	$('.flyout-overlay').addClass('active');
 });
 

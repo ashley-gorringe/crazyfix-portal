@@ -53,6 +53,11 @@ if(empty($_POST['action'])){
 			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/vehicle-new.php';
 			break;
 
+		case 'booking-new':
+			checkLevelProcess(1);
+			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/booking-new.php';
+			break;
+
 		default:
 		$response->status = 'error';
 		$response->message = 'Action is not valid.';
