@@ -1,0 +1,79 @@
+{% extends "_layout_admin.twig" %}
+
+{% set menuSlug = "services" %}
+{% set pageTitle = "Services" %}
+
+{% block main %}
+<section>
+    <div class="container">
+        <div class="entity-header">
+            <div class="left">
+                <a class="button --icon-left" href="/admin/services"><i data-feather="chevron-left"></i>Services</a>
+                <h1>Service #{{service.service_id}}</h1>
+            </div>
+            <div class="right">
+                <div class="button-group">
+                    <a href="#" class="delete-server button --danger --icon-left" data-slug="{{server.server_slug}}">Delete<i data-feather="trash-2"></i></a>
+                    <a href="#" class="flyout-server_edit button --primary --icon-left">Complete<i data-feather="check"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="cards --2-col">
+            <div class="col">
+                <div class="card">
+                    <div class="header">
+                        <div class="icon"><i data-feather="user"></i></div>
+                        <span>Customer</span>
+                    </div>
+                    <div class="body">
+                        <div class="data --1-col">
+                            <div class="attribute">
+                                <span>Name</span>
+                                <span>{{customer.title}} {{customer.first_name}} {{customer.last_name}}</span>
+                            </div>
+                            <div class="attribute">
+                                <span>Email</span>
+                                <span>{{customer.email_address}}</span>
+                            </div>
+                            <div class="attribute">
+                                <span>Phone</span>
+                                <span>{{customer.phone}}</span>
+                            </div>
+                            <div class="attribute">
+                                <span>Address</span>
+                                <span>{{customer.address_line_1}}, {% if customer.address_line_2 %}{{customer.address_line_2}}, {% endif %}{{customer.postcode}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="header">
+                        <div class="icon"><i data-feather="truck"></i></div>
+                        <span>Vehicle</span>
+                    </div>
+                    <div class="body">
+                        <div class="data --1-col">
+                            <div class="attribute">
+                                <span>Make</span>
+                                <span>{{vehicle.make}}</span>
+                            </div>
+                            <div class="attribute">
+                                <span>Model</span>
+                                <span>{{vehicle.model}}</span>
+                            </div>
+                            <div class="attribute">
+                                <span>Registration</span>
+                                <span>{{vehicle.registration}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

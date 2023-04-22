@@ -44,7 +44,10 @@ Route::add('/admin', function() {
 	header('Location: /admin/services');
 });
 Route::add('/admin/services', function() {
-	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/routes/admin_services.php';
+	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/routes/admin_service_index.php';
+});
+Route::add('/admin/services/([0-9a-zA-Z]*)', function($service_id) {
+	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/routes/admin_service_single.php';
 });
 
 Route::pathNotFound(function() {

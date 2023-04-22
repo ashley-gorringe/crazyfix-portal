@@ -11,7 +11,7 @@ foreach ($services as $key => $service) {
     $services[$key]['complete_date'] = date('jS \o\f M Y',strtotime($service['complete_date']));
 }
 
-echo $GLOBALS['twig']->render('admin_services_index.twig',[
+echo $GLOBALS['twig']->render('admin_service_index.twig',[
     'customer'=>$_SESSION['customer'],
     'services'=>$services,
 ]);
