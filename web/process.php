@@ -49,13 +49,18 @@ if(empty($_POST['action'])){
 		
 
 		case 'vehicle-new':
-			checkLevelProcess(1);
 			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/vehicle-new.php';
 			break;
 
 		case 'booking-new':
-			checkLevelProcess(1);
 			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/booking-new.php';
+			break;
+
+		case 'item-add':
+			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/item-add.php';
+			break;
+		case 'labour-add':
+			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/labour-add.php';
 			break;
 
 		default:

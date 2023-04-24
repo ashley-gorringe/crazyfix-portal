@@ -1,0 +1,30 @@
+<div class="flyout" id="flyout-item_add">
+    <div class="header">
+        <span>Add an Item</span>
+        <button class="flyout-close"><i data-feather="x"></i></button>
+    </div>
+    <div class="body">
+    <form class="process-form" id="flyout-form__item_add">
+		<input type="hidden" name="action" value="item-add" />
+        <input type="hidden" name="service_id" value="{{ service.service_id }}">
+		<div class="form-group">
+			<label>Select Item</label>
+			<select class="form-select" name="item">
+                <option value="">Please Select</option>
+				{% for item in items %}
+					<option value="{{ item.item_id }}">{{ item.name }} (£{{item.price}})</option>
+				{% endfor %}
+            </select>
+			<div class="form-error"></div>
+		</div>
+		<div class="form-group">
+			<label>Quantity</label>
+			<input class="form-control" type="number" name="quantity" min="1" value="1" />
+			<div class="form-error"></div>
+		</div>
+        <div class="form-group">
+		    <button type="submit" class="button --primary">Add Item<i data-feather="loader"></i></button>
+        </div>
+	</form>
+    </div>
+</div>

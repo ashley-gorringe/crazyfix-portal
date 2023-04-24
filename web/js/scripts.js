@@ -241,16 +241,16 @@ $('#team-options-solo').click(function(event){
 });
 
 
-$('.delete-server').click(function(event){
+$('.delete-service').click(function(event){
 	event.preventDefault();
 	var server_slug = $(this).data('slug');
 	swal({
 		icon: "warning",
 		title: "Are you sure?",
-		text: "This Server and all the Sites that belong to it will be perminently deleted.",
+		text: "This will delete the service from the database. This action cannot be undone.",
 		buttons: {
 			cancel: 'Cancel',
-			confirm: 'Delete Server',
+			confirm: 'Delete Service',
 		},
 		dangerMode: true,
 	}).then((willDelete) => {
@@ -258,7 +258,7 @@ $('.delete-server').click(function(event){
 			$.ajax({
 				type: "POST",
 				url: '/process.php',
-				data: "action=server-delete&slug="+server_slug,
+				data: "action=service-delete&slug="+server_slug,
 				dataType: 'json',
 				success: function(response){
 					console.log(response);
@@ -342,6 +342,24 @@ $('.flyout-booking_new').click(function(event){
 	$('#flyout-form__booking_new').find('.form-select').removeClass( "--invalid" );
 
 	$('#flyout-booking_new').addClass('active');
+	$('.flyout-overlay').addClass('active');
+});
+$('.flyout-item_add').click(function(event){
+	event.preventDefault();
+	$('#flyout-form__item_add').trigger("reset");
+	$('#flyout-form__item_add').find('.form-control').removeClass( "--invalid" );
+	$('#flyout-form__item_add').find('.form-select').removeClass( "--invalid" );
+
+	$('#flyout-item_add').addClass('active');
+	$('.flyout-overlay').addClass('active');
+});
+$('.flyout-labour_add').click(function(event){
+	event.preventDefault();
+	$('#flyout-form__labour_add').trigger("reset");
+	$('#flyout-form__labour_add').find('.form-control').removeClass( "--invalid" );
+	$('#flyout-form__labour_add').find('.form-select').removeClass( "--invalid" );
+
+	$('#flyout-labour_add').addClass('active');
 	$('.flyout-overlay').addClass('active');
 });
 

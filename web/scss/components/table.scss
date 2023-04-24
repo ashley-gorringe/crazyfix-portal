@@ -121,4 +121,14 @@
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         }
     }
+    &.--service-items{
+        .header,.row,.row-skeleton{
+            grid-template-columns: 3fr 1fr 1fr;
+        }
+    }
+    &.--service-labour{
+        .header,.row,.row-skeleton{
+            grid-template-columns: 5fr 1fr;
+        }
+    }
 }

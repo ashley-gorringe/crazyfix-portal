@@ -13,7 +13,7 @@
             </div>
             <div class="right">
                 <div class="button-group">
-                    <a href="#" class="delete-server button --danger --icon-left" data-slug="{{server.server_slug}}">Delete<i data-feather="trash-2"></i></a>
+                    <a href="#" class="delete-service button --danger --icon-left" data-slug="{{server.server_slug}}">Delete<i data-feather="trash-2"></i></a>
                     <a href="#" class="flyout-server_edit button --primary --icon-left">Complete<i data-feather="check"></i></a>
                 </div>
             </div>
@@ -73,7 +73,61 @@
                     </div>
                 </div>
             </div>
+            <div class="col">
+                <div class="table-card --has-footer">
+                    <div class="card-header">
+                        <span>Items</span>
+                    </div>
+                    <div class="table --service-items">
+                        <div class="header">
+                            <span>Item</span>
+                            <span>Quantity</span>
+                            <span>Line Total</span>
+                        </div>
+                        <div class="body">
+                            {% for item in service_items %}
+                            <a class="row" href="#">
+                                <span>{{item.name}}</span>
+                                <span>{{item.quantity}}</span>
+                                <span>£{{item.sub_total}}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="button-group">
+                            <a href="#" class="flyout-item_add button --icon-left">Add Item<i data-feather="plus-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-card --has-footer">
+                    <div class="card-header">
+                        <span>Labour</span>
+                    </div>
+                    <div class="table --service-labour">
+                        <div class="header">
+                            <span>Description</span>
+                            <span>Hours</span>
+                        </div>
+                        <div class="body">
+                            {% for item in service_labour %}
+                            <a class="row" href="#">
+                                <span>{{item.description}}</span>
+                                <span>{{item.hours}}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="button-group">
+                            <a href="#" class="flyout-labour_add button --icon-left">Add Labour<i data-feather="plus-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+{% include 'flyouts/item_add.twig' %}
+{% include 'flyouts/labour_add.twig' %}
 {% endblock %}
