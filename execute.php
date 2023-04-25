@@ -28,12 +28,6 @@ $database = new Medoo([
     'password' => $_ENV['DB_PASSWORD'],
 ]);
 
-use Pdp\Rules;
-$TLD_LIST = Rules::fromPath('https://raw.githubusercontent.com/publicsuffix/list/master/public_suffix_list.dat');
-
-use Spatie\Dns\Dns;
-$DNS = new Dns();
-
 if(isset($_COOKIE['login_token'])){
     $_SESSION['login_token'] = $_COOKIE['login_token'];
 }
