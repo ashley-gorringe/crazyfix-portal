@@ -35,10 +35,10 @@ if(!$submitValid){
 
     $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $database->update('user',[
+    $database->update('customer',[
         'password'=>$password_hash,
     ],[
-        'user_id'=>$_SESSION['user_id'],
+        'customer_id'=>$_SESSION['cusomter_id'],
     ]);
 
     $response->status = 'success';
