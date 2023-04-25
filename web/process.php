@@ -62,6 +62,9 @@ if(empty($_POST['action'])){
 		case 'labour-add':
 			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/labour-add.php';
 			break;
+		case 'service-complete':
+			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/service-complete.php';
+			break;
 
 		default:
 		$response->status = 'error';

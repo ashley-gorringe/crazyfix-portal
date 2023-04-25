@@ -1,0 +1,44 @@
+{% extends "_layout_dashboard.twig" %}
+
+{% set menuSlug = "invoices" %}
+{% set pageTitle = "Invoices" %}
+
+{% block main %}
+<section>
+    <div class="container">
+        <h1>Invoices</h1>
+    </div>
+</section>
+<section>
+    <div class="container">
+    {% if invoices %}
+        <div class="table --invoices">
+            <div class="header">
+                <span>Status</span>
+                <span>Invoice No.</span>
+                <span>Vehicle</span>
+                <span>Issue Date</span>
+                <span>Due Date</span>
+                <span>Total Payable</span>
+            </div>
+            <div class="body">
+            {% for invoice in invoices %}
+                <a class="row" href="/invoices/{{invoice.invoice_id}}">
+                    <span>{{invoice.status}}</span>
+                    <span>{{invoice.invoice_id}}</span>
+                    <span>{{invoice.vehicle_make}} {{invoice.vehicle_model}} ({{invoice.vehicle_registration}})</span>
+                    <span>{{invoice.issue_date}}</span>
+                    <span>{{invoice.due_date}}</span>
+                    <span>£{{invoice.total_payable}}</span>
+                </a>
+            {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="index-empty">
+            <span>Nothing to see here...</span>
+        </div>
+    {% endif %}
+    </div>
+</section>
+{% endblock %}

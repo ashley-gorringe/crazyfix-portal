@@ -1,0 +1,134 @@
+{% extends "_layout_dashboard.twig" %}
+
+{% set menuSlug = "invoices" %}
+{% set pageTitle = "Invoices" %}
+
+{% block main %}
+<section>
+    <div class="container">
+        <div class="entity-header">
+            <div class="left">
+                <a class="button --icon-left" href="/invoices"><i data-feather="chevron-left"></i>Invoices</a>
+                <h1>Invoice #{{invoice.invoice_id}}</h1>
+            </div>
+            <div class="right">
+                <div class="button-group">
+                    <a href="#" class="flyout-service_complete button --stripe">Pay £{{invoice.total_payable}} with Stripe</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="cards --2-col">
+            <div class="col">
+                <div class="card">
+                    <div class="header">
+                        <span>Invoice</span>
+                    </div>
+                    <div class="body">
+                        <div class="data --1-col">
+                            <div class="attribute">
+                                <span>Customer</span>
+                                <span>{{invoice.customer_title}} {{invoice.customer_first_name}} {{invoice.customer_last_name}}</span>
+                            </div>
+                            <div class="attribute">
+                                <span>Vehicle</span>
+                                <span>{{invoice.vehicle_make}} {{invoice.vehicle_model}} ({{invoice.vehicle_registration}})</span>
+                            </div>
+                            <div class="attribute">
+                                <span>Issue Date</span>
+                                <span>{{invoice.issue_date}}</span>
+                            </div>
+                            <div class="attribute">
+                                <span>Due Date</span>
+                                <span>{{invoice.due_date}}</span>
+                            </div>
+                            {% if invoice.paid_date %}
+                            <div class="attribute">
+                                <span>Paid Date</span>
+                                <span>{{invoice.paid_date}}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="header">
+                        <span>Payment</span>
+                    </div>
+                    <div class="body">
+                        <div class="data --1-col">
+                            <div class="attribute">
+                                <span>Total Items</span>
+                                <span>£{{invoice.total_items}}</span>
+                            </div>
+                            <div class="attribute">
+                                <span>Total Labour</span>
+                                <span>£{{invoice.total_labour}}</span>
+                            </div>
+                            <div class="attribute">
+                                <span>VAT</span>
+                                <span>£{{invoice.total_vat}}</span>
+                            </div>
+                            {% if invoice.discount_percentage %}
+                            <div class="attribute">
+                                <span>Discount</span>
+                                <span>{{invoice.discount_percentage}}% (- £{{invoice.discount_amount}})</span>
+                            </div>
+                            {% endif %}
+                            <div class="attribute">
+                                <span>Total Payable</span>
+                                <span>£{{invoice.total_payable}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="table-card">
+                    <div class="card-header">
+                        <span>Items</span>
+                    </div>
+                    <div class="table --service-items">
+                        <div class="header">
+                            <span>Item</span>
+                            <span>Quantity</span>
+                            <span>Line Total</span>
+                        </div>
+                        <div class="body">
+                            {% for item in invoice_items %}
+                            <a class="row" href="#">
+                                <span>{{item.item_name}}</span>
+                                <span>{{item.item_quantity}}</span>
+                                <span>£{{item.item_sub_total}}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="table-card">
+                    <div class="card-header">
+                        <span>Labour</span>
+                    </div>
+                    <div class="table --service-labour">
+                        <div class="header">
+                            <span>Description</span>
+                            <span>Hours</span>
+                        </div>
+                        <div class="body">
+                            {% for item in invoice_labour %}
+                            <a class="row" href="#">
+                                <span>{{item.labour_description}}</span>
+                                <span>{{item.labour_hours}}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

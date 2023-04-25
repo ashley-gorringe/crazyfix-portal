@@ -136,4 +136,9 @@
             grid-template-columns: 5fr 1fr;
         }
     }
+    &.--invoices{
+        .header,.row,.row-skeleton{
+            grid-template-columns: 0.5fr 0.5fr 1fr 1fr 1fr 1fr;
+        }
+    }
 }

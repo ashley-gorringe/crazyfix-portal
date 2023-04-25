@@ -438,6 +438,21 @@
 		}
 	}
 
+	&.--stripe{
+		background-color: #635BFF;
+		color: white;
+		box-shadow: 0px 0px 0px 0px transparentize(#635BFF, 0.5);
+		&::after{
+			background-color: #635BFF;
+		}
+		&:active{
+			background-color: darken(#635BFF, 10%);
+		}
+		&:focus{
+			box-shadow: 0px 0px 0px 2px transparentize(#635BFF, 0.5);
+		}
+	}
+
 	&.--quiet{
 		background-color: transparent;
 		color: $colour-dark;

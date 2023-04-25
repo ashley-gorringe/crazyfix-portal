@@ -9,13 +9,7 @@
         <div class="entity-header">
             <div class="left">
                 <a class="button --icon-left" href="/admin/services"><i data-feather="chevron-left"></i>Services</a>
-                <h1>Service #{{service.service_id}}</h1>
-            </div>
-            <div class="right">
-                <div class="button-group">
-                    <a href="#" class="delete-service button --danger --icon-left" data-slug="{{server.server_slug}}">Delete<i data-feather="trash-2"></i></a>
-                    <a href="#" class="flyout-service_complete button --primary --icon-left">Complete<i data-feather="check"></i></a>
-                </div>
+                <h1>Invoice #{{invoice.invoice_id}}</h1>
             </div>
         </div>
     </div>
@@ -26,55 +20,65 @@
             <div class="col">
                 <div class="card">
                     <div class="header">
-                        <div class="icon"><i data-feather="user"></i></div>
-                        <span>Customer</span>
+                        <span>Invoice</span>
                     </div>
                     <div class="body">
                         <div class="data --1-col">
                             <div class="attribute">
-                                <span>Name</span>
-                                <span>{{customer.title}} {{customer.first_name}} {{customer.last_name}}</span>
+                                <span>Customer</span>
+                                <span>{{invoice.customer_title}} {{invoice.customer_first_name}} {{invoice.customer_last_name}}</span>
                             </div>
                             <div class="attribute">
-                                <span>Email</span>
-                                <span>{{customer.email_address}}</span>
+                                <span>Vehicle</span>
+                                <span>{{invoice.vehicle_make}} {{invoice.vehicle_model}} ({{invoice.vehicle_registration}})</span>
                             </div>
                             <div class="attribute">
-                                <span>Phone</span>
-                                <span>{{customer.phone}}</span>
+                                <span>Issue Date</span>
+                                <span>{{invoice.issue_date}}</span>
                             </div>
+                            {% if invoice.paid_date %}
                             <div class="attribute">
-                                <span>Address</span>
-                                <span>{{customer.address_line_1}}, {% if customer.address_line_2 %}{{customer.address_line_2}}, {% endif %}{{customer.postcode}}</span>
+                                <span>Paid Date</span>
+                                <span>{{invoice.paid_date}}</span>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="header">
-                        <div class="icon"><i data-feather="truck"></i></div>
-                        <span>Vehicle</span>
+                        <span>Payment</span>
                     </div>
                     <div class="body">
                         <div class="data --1-col">
                             <div class="attribute">
-                                <span>Make</span>
-                                <span>{{vehicle.make}}</span>
+                                <span>Total Items</span>
+                                <span>£{{invoice.total_items}}</span>
                             </div>
                             <div class="attribute">
-                                <span>Model</span>
-                                <span>{{vehicle.model}}</span>
+                                <span>Total Labour</span>
+                                <span>£{{invoice.total_labour}}</span>
                             </div>
                             <div class="attribute">
-                                <span>Registration</span>
-                                <span>{{vehicle.registration}}</span>
+                                <span>VAT</span>
+                                <span>£{{invoice.total_vat}}</span>
+                            </div>
+                            {% if invoice.discount_percentage %}
+                            <div class="attribute">
+                                <span>Discount</span>
+                                <span>{{invoice.discount_percentage}}% (- £{{invoice.discount_amount}})</span>
+                            </div>
+                            {% endif %}
+                            <div class="attribute">
+                                <span>Total Payable</span>
+                                <span>£{{invoice.total_payable}}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="table-card --has-footer">
+                <div class="table-card">
                     <div class="card-header">
                         <span>Items</span>
                     </div>
@@ -85,22 +89,17 @@
                             <span>Line Total</span>
                         </div>
                         <div class="body">
-                            {% for item in service_items %}
+                            {% for item in invoice_items %}
                             <a class="row" href="#">
-                                <span>{{item.name}}</span>
-                                <span>{{item.quantity}}</span>
-                                <span>£{{item.sub_total}}</span>
+                                <span>{{item.item_name}}</span>
+                                <span>{{item.item_quantity}}</span>
+                                <span>£{{item.item_sub_total}}</span>
                             </a>
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="footer">
-                        <div class="button-group">
-                            <a href="#" class="flyout-item_add button --icon-left">Add Item<i data-feather="plus-circle"></i></a>
-                        </div>
-                    </div>
                 </div>
-                <div class="table-card --has-footer">
+                <div class="table-card">
                     <div class="card-header">
                         <span>Labour</span>
                     </div>
@@ -110,17 +109,12 @@
                             <span>Hours</span>
                         </div>
                         <div class="body">
-                            {% for item in service_labour %}
+                            {% for item in invoice_labour %}
                             <a class="row" href="#">
-                                <span>{{item.description}}</span>
-                                <span>{{item.hours}}</span>
+                                <span>{{item.labour_description}}</span>
+                                <span>{{item.labour_hours}}</span>
                             </a>
                             {% endfor %}
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <div class="button-group">
-                            <a href="#" class="flyout-labour_add button --icon-left">Add Labour<i data-feather="plus-circle"></i></a>
                         </div>
                     </div>
                 </div>
@@ -128,7 +122,4 @@
         </div>
     </div>
 </section>
-{% include 'flyouts/item_add.twig' %}
-{% include 'flyouts/labour_add.twig' %}
-{% include 'flyouts/service_complete.twig' %}
 {% endblock %}

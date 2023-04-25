@@ -16,6 +16,15 @@ $(".service_date_picker").flatpickr({
         "firstDayOfWeek": 1 // start week on Monday
     }
 });
+$(".complete_date_picker").flatpickr({
+	altInput: true,
+    altFormat: "F j Y",
+    dateFormat: "Y-m-d",
+	defaultDate: "today",
+    "locale": {
+        "firstDayOfWeek": 1 // start week on Monday
+    }
+});
 
 $('.sidebar-slim').on('mouseenter', function(event) {
     event.preventDefault();
@@ -360,6 +369,15 @@ $('.flyout-labour_add').click(function(event){
 	$('#flyout-form__labour_add').find('.form-select').removeClass( "--invalid" );
 
 	$('#flyout-labour_add').addClass('active');
+	$('.flyout-overlay').addClass('active');
+});
+$('.flyout-service_complete').click(function(event){
+	event.preventDefault();
+	$('#flyout-form__service_complete').trigger("reset");
+	$('#flyout-form__service_complete').find('.form-control').removeClass( "--invalid" );
+	$('#flyout-form__service_complete').find('.form-select').removeClass( "--invalid" );
+
+	$('#flyout-service_complete').addClass('active');
 	$('.flyout-overlay').addClass('active');
 });
 

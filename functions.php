@@ -4,6 +4,20 @@ function convertDecimalToMD5($int){
     return md5((string)$int);
 }
 
+//Convert pence to pounds with 2 decimal places
+function convertPenceToPounds($int){
+	return number_format($int/100,2);
+}
+
+//Subtract discount percentge
+function subtractDiscount($int,$percentage){
+	return $int - ($int * ($percentage/100));
+}
+
+//Get percentage of int
+function getPercentage($int,$percentage){
+	return $int * ($percentage/100);
+}
 
 function timeago($time){
     $origin = new DateTime(date("Y-m-d H:i:s",$time));

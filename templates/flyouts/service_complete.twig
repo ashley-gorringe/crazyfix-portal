@@ -1,0 +1,27 @@
+<div class="flyout" id="flyout-service_complete">
+    <div class="header">
+        <span>Complete Booking</span>
+        <button class="flyout-close"><i data-feather="x"></i></button>
+    </div>
+    <div class="body">
+    <form class="process-form" id="flyout-form__service_complete">
+		<input type="hidden" name="action" value="service-complete" />
+        <input type="hidden" name="service_id" value="{{ service.service_id }}">
+		<div class="form-group">
+			<label>Complete Date</label>
+			<input class="form-control complete_date_picker" type="text" name="complete_date" />
+			<div class="form-error"></div>
+			<div class="form-help">When was the service completed?</div>
+		</div>
+        <div class="form-group">
+			<label>Discount Percentage</label>
+			<input class="form-control" type="number" name="discount_percentage" min="0" max="100" value="0" />
+			<div class="form-error"></div>
+            <div class="form-help">Discount percentage that should be applied to the invoice. 0-100.</div>
+		</div>
+        <div class="form-group">
+		    <button type="submit" class="button --primary">Complete Service<i data-feather="loader"></i></button>
+        </div>
+	</form>
+    </div>
+</div>

@@ -36,6 +36,14 @@ Route::add('/vehicles', function() {
 	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/routes/vehicle_index.php';
 });
 
+Route::add('/invoices', function() {
+	checkAuth();
+	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/routes/invoice_index.php';
+});
+Route::add('/invoices/([0-9a-zA-Z]*)', function($invoice_id) {
+	require_once dirname($_SERVER['DOCUMENT_ROOT']).'/routes/invoice_single.php';
+});
+
 Route::add('/sign-out', function() {
 	resetAuth();
 });
