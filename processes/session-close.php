@@ -8,10 +8,10 @@ if(empty($token)){
 	exit;
 }
 
-$count = $GLOBALS['database']->count('user_token',[
+$count = $GLOBALS['database']->count('login_token',[
     'AND'=>[
         'token'=>$token,
-        'user_id'=>$_SESSION['user_id'],
+        'customer_id'=>$_SESSION['customer_id'],
     ],
 ]);
 if($count < 1){
@@ -21,14 +21,14 @@ if($count < 1){
 	exit;
 }
 
-if($token === $_SESSION['user_token']){
-    $GLOBALS['database']->delete('user_token',['token'=>$token]);
+if($token === $_SESSION['login_token']){
+    $GLOBALS['database']->delete('login_token',['token'=>$token]);
     $response->status = 'success';
     $response->current = true;
     echo json_encode($response);
     exit;
 }else{
-    $GLOBALS['database']->delete('user_token',['token'=>$token]);
+    $GLOBALS['database']->delete('login_token',['token'=>$token]);
     $response->status = 'success';
     $response->current = false;
     echo json_encode($response);
