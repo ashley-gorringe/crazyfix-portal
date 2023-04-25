@@ -12,5 +12,5 @@ foreach ($sessions as $key => $session){
     $sessions[$key]['created_datetime'] = date('jS \o\f M Y - G:i:s',strtotime($session['created_datetime']));
     $sessions[$key]['latest_activity'] = timeago(strtotime($session['latest_activity']));
 }
-echo $GLOBALS['twig']->render('account_security.twig',['user'=>$_SESSION['user'],'team'=>$_SESSION['team'],'sessions'=>$sessions]);
+echo $GLOBALS['twig']->render('account_security.twig',['customer'=>$_SESSION['customer'],'sessions'=>$sessions]);
 ?>
