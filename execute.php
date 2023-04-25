@@ -4,6 +4,9 @@ define('BASE_PATH',dirname($_SERVER['DOCUMENT_ROOT']).'/');
 session_start();
 date_default_timezone_set('Europe/London');
 
+// Turn off all error reporting
+error_reporting(0);
+
 require BASE_PATH.'vendor/autoload.php';
 
 use donatj\UserAgent\UserAgentParser;
