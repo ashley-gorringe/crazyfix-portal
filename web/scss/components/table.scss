@@ -105,7 +105,12 @@
             }
         }
     }
-
+    &.--sessions{
+        margin-bottom: 15px;
+        .header,.row,.row-skeleton{
+            grid-template-columns: 2fr 2fr 1fr;
+        }
+    }
     &.--bookings{
         .header,.row,.row-skeleton{
             grid-template-columns: 1fr 1fr 1fr;
