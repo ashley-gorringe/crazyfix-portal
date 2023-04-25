@@ -1,5 +1,5 @@
 <?php
-$GLOBALS['database']->delete('user_token',['user_id'=>$_SESSION['user_id']]);
+$GLOBALS['database']->delete('login_token',['customer_id'=>$_SESSION['customer_id']]);
 $response->status = 'success';
 echo json_encode($response);
 exit;
