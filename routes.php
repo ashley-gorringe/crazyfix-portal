@@ -52,7 +52,7 @@ Route::add('/admin/services/([0-9a-zA-Z]*)', function($service_id) {
 
 Route::pathNotFound(function() {
   header('HTTP/1.0 404 Not Found');
-  //echo $GLOBALS['twig']->render('404.twig');
+  echo $GLOBALS['twig']->render('404.twig');
 });
 
 Route::run('/');
