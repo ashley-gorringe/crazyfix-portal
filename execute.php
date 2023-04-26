@@ -5,7 +5,7 @@ session_start();
 date_default_timezone_set('Europe/London');
 
 // Turn off all error reporting
-error_reporting(0);
+//error_reporting(0);
 
 require BASE_PATH.'vendor/autoload.php';
 
