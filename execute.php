@@ -28,6 +28,10 @@ $database = new Medoo([
     'password' => $_ENV['DB_PASSWORD'],
 ]);
 
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Stripe\Stripe;
+
 if(isset($_COOKIE['login_token'])){
     $_SESSION['login_token'] = $_COOKIE['login_token'];
 }

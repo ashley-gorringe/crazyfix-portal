@@ -5,6 +5,7 @@
 		"catfan/medoo": "^1.6",
         "vlucas/phpdotenv": "^5.2",
 		"sendgrid/sendgrid": "^7.11",
-        "donatj/phpuseragentparser": "^1.7"
+        "donatj/phpuseragentparser": "^1.7",
+        "stripe/stripe-php": "^10.12"
     }
 }

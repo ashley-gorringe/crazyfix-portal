@@ -53,20 +53,21 @@ CREATE TABLE `item` (
   `name` varchar(50) NOT NULL,
   `price` int(11) NOT NULL,
   `is_original` int(1) NOT NULL DEFAULT '0',
-  `product_code` varchar(50) NOT NULL
+  `product_code` varchar(50) NOT NULL,
+  `stripe_price_id` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `item` (`item_id`, `name`, `price`, `is_original`, `product_code`) VALUES
-(1, 'TurboCharge Boost Kit', 39999, 1, '9U6T-JD6K-8F4G'),
-(2, 'ProSport Performance Muffler', 19999, 1, 'V2YH-P1ZT-L8EK'),
-(3, 'BrakeMax High-Performance Brake Pads', 8999, 1, 'G7FJ-Y6H9-X9L8'),
-(4, 'FlexiCoil Suspension Springs', 24999, 0, '1D0Q-F6TJ-K7NL'),
-(5, 'SuperFlow Cold Air Intake', 17999, 1, '8B6S-E9WL-P3XK'),
-(6, 'DynaBolt Exhaust Headers', 32999, 1, '3N7J-H4YK-L1V6'),
-(7, 'MegaSpark Ignition Coils', 14999, 0, 'X4R7-D5N9-H0J1'),
-(8, 'ApexRide Shock Absorbers', 29999, 1, 'C8K9-J6H3-F2N0'),
-(9, 'TitanDrive Transmission Fluid', 2499, 0, 'A2W3-M7D1-Y9J5'),
-(10, 'PowerDrive High Torque Starter', 14999, 1, 'P8Z6-N2F7-H1L0');
+INSERT INTO `item` (`item_id`, `name`, `price`, `is_original`, `product_code`, `stripe_price_id`) VALUES
+(1, 'TurboCharge Boost Kit', 39999, 1, '9U6T-JD6K-8F4G', 'price_1N3cWNC8tQOBWP0Z7aHJiSSk'),
+(2, 'ProSport Performance Muffler', 19999, 1, 'V2YH-P1ZT-L8EK', 'price_1N3cWhC8tQOBWP0ZEoLkqvTS'),
+(3, 'BrakeMax High-Performance Brake Pads', 8999, 1, 'G7FJ-Y6H9-X9L8', 'price_1N3cWyC8tQOBWP0Z5pE6PfyI'),
+(4, 'FlexiCoil Suspension Springs', 24999, 0, '1D0Q-F6TJ-K7NL', 'price_1N3cXFC8tQOBWP0ZLMo7XBTD'),
+(5, 'SuperFlow Cold Air Intake', 17999, 1, '8B6S-E9WL-P3XK', 'price_1N3cXWC8tQOBWP0Z6adJPDHM'),
+(6, 'DynaBolt Exhaust Headers', 32999, 1, '3N7J-H4YK-L1V6', 'price_1N3cXqC8tQOBWP0ZNu8Ie8Bw'),
+(7, 'MegaSpark Ignition Coils', 14999, 0, 'X4R7-D5N9-H0J1', 'price_1N3cY1C8tQOBWP0ZAR49smgt'),
+(8, 'ApexRide Shock Absorbers', 29999, 1, 'C8K9-J6H3-F2N0', 'price_1N3cYFC8tQOBWP0ZKLdwmpgv'),
+(9, 'TitanDrive Transmission Fluid', 2499, 0, 'A2W3-M7D1-Y9J5', 'price_1N3cYSC8tQOBWP0ZczKhc7da'),
+(10, 'PowerDrive High Torque Starter', 14999, 1, 'P8Z6-N2F7-H1L0', 'price_1N3cYeC8tQOBWP0ZdSX8kPns');
 
 CREATE TABLE `labour` (
   `labour_id` int(11) NOT NULL,
