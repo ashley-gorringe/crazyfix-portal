@@ -289,6 +289,11 @@ $('.delete-service').click(function(event){
 $('.find_vehicle_button').click(function(event){
 	event.preventDefault();
 	var vehicle_reg = $("input[name=registration]").val();
+
+	var submitButton = $(this);
+	submitButton.prop('disabled', true);
+	submitButton.addClass('--processing');
+
 	$.ajax({
 		type: "POST",
 		url: '/process.php',
@@ -297,13 +302,18 @@ $('.find_vehicle_button').click(function(event){
 		success: function(response){
 			console.log(response);
 			if(response.status == 'error'){
+				submitButton.prop('disabled', false);
+				submitButton.removeClass('--processing');
 				swal({
 					title: "Hold up!",
 					text: response.message,
 					icon: "error",
 				});
 			}else if(response.status == 'success'){
-				//Not implemented yet
+
+				submitButton.prop('disabled', false);
+				submitButton.removeClass('--processing');
+
 				var vehicle_make = response.vehicle_make;
 				if(vehicle_make){
 					$("input[name=manufacturer]").val(vehicle_make);
