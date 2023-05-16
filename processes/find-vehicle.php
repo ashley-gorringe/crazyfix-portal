@@ -5,7 +5,7 @@ $registration = $_POST['reg'];
 
 $url = 'https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles';
 $headers = [
-    'x-api-key: v540xKCqCV4hBAv363yIa5Sd72HPLo223uhu1pkR',
+    'x-api-key: '.$_ENV['DVLA_API_KEY'],
     'Content-Type: application/json'
 ];
 $data = [
