@@ -286,6 +286,29 @@ $('.delete-service').click(function(event){
 	});
 });
 
+$('.find_vehicle_button').click(function(event){
+	event.preventDefault();
+	var vehicle_reg = $("input[name=registration]").val();
+	$.ajax({
+		type: "POST",
+		url: '/process.php',
+		data: "action=find-vehicle&reg="+vehicle_reg,
+		dataType: 'json',
+		success: function(response){
+			console.log(response);
+			if(response.status == 'error'){
+				swal({
+					title: "Hold up!",
+					text: response.message,
+					icon: "error",
+				});
+			}else if(response.status == 'success'){
+				//Not implemented yet
+			}
+		}
+	});
+});
+
 
 $('.flyout-overlay').click(function(event){
 	event.preventDefault();

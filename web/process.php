@@ -66,6 +66,10 @@ if(empty($_POST['action'])){
 			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/service-complete.php';
 			break;
 
+		case 'find-vehicle':
+			include dirname($_SERVER['DOCUMENT_ROOT']).'/processes/find-vehicle.php';
+			break;
+
 		default:
 		$response->status = 'error';
 		$response->message = 'Action is not valid.';
