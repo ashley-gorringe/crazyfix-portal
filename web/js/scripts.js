@@ -304,6 +304,10 @@ $('.find_vehicle_button').click(function(event){
 				});
 			}else if(response.status == 'success'){
 				//Not implemented yet
+				var vehicle_make = response.vehicle_make;
+				if(vehicle_make){
+					$("input[name=manufacturer]").val(vehicle_make);
+				}
 			}
 		}
 	});
