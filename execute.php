@@ -5,7 +5,7 @@ session_start();
 date_default_timezone_set('Europe/London');
 
 // Turn off all error reporting
-error_reporting(0);
+//error_reporting(0);
 
 require BASE_PATH.'vendor/autoload.php';
 
@@ -31,6 +31,8 @@ $database = new Medoo([
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Stripe\Stripe;
+
+$sendgrid = new \SendGrid($_ENV['SENDGRID_API_KEY']);
 
 if(isset($_COOKIE['login_token'])){
     $_SESSION['login_token'] = $_COOKIE['login_token'];
