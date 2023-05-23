@@ -47,9 +47,33 @@ if(!$submitValid){
         'customer_id'=>$_SESSION['customer_id'],
         'vehicle_id'=>$vehicle_id,
     ]);
-    $response->status = 'success';
-    $response->successRedirect = '/bookings/';
-    echo json_encode($response);
-    exit;
+
+    $customer = $database->get('customer',[
+        'first_name',
+        'last_name',
+        'email_address',
+    ],[
+        'customer_id'=>$_SESSION['customer_id'],
+    ]);
+
+    $email = new \SendGrid\Mail\Mail();
+    $email->setFrom("hello@crazyfix.uk", "CrazyFix Automotive");
+    $email->setSubject("New Booking");
+    $email->addTo($customer['email_address'], $customer['first_name'].' '.$customer['last_name']);
+    $email->addContent("text/plain", "New booking created.");
+
+    try {
+        $sendgrid_response = $sendgrid->send($email);
+        $response->status = 'success';
+        $response->sendgrid_response = $sendgrid_response;
+        $response->successRedirect = '/bookings/';
+        echo json_encode($response);
+        exit;
+    } catch (Exception $e) {
+        $response->status = 'error';
+        $response->message = 'Caught exception: '.$e->getMessage();
+        echo json_encode($response);
+        exit;
+    }
 }
 ?>
