@@ -1,6 +1,30 @@
 <?php
 
-$registration = $_POST['reg'];
+if(empty($_POST['reg'])){
+    $errorFields[] = array(
+        'field_name'=>'registration',
+        'error_message'=>'This is required.',
+    );
+    $submitValid = false;
+    $response->status = 'error';
+	$response->errorFields = $errorFields;
+	echo json_encode($response);
+	exit;
+}else{
+    if(validUKVehicleReg($_POST['reg'])){
+        $registration = $_POST['reg'];
+    }else{
+        $errorFields[] = array(
+            'field_name'=>'registration',
+            'error_message'=>"This is invalid. Please enter a valid UK vehicle registration. Don't include spaces.",
+        );
+        $submitValid = false;
+        $response->status = 'error';
+        $response->errorFields = $errorFields;
+        echo json_encode($response);
+        exit;
+    }
+}
 
 
 $url = 'https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles';

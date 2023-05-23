@@ -290,9 +290,18 @@ $('.find_vehicle_button').click(function(event){
 	event.preventDefault();
 	var vehicle_reg = $("input[name=registration]").val();
 
+	var formElements = $('#flyout-form__vehicle-new');
+
 	var submitButton = $(this);
 	submitButton.prop('disabled', true);
 	submitButton.addClass('--processing');
+    formElements.find('.form-control').removeClass( "--invalid" );
+
+    formElements.find('.form-control').prop('readonly', true);
+	formElements.find('.form-select').prop('readonly', true);
+
+	formElements.find('.form-control').removeClass( "--invalid" );
+	formElements.find('.form-select').removeClass( "--invalid" );
 
 	$.ajax({
 		type: "POST",
@@ -304,15 +313,34 @@ $('.find_vehicle_button').click(function(event){
 			if(response.status == 'error'){
 				submitButton.prop('disabled', false);
 				submitButton.removeClass('--processing');
-				swal({
-					title: "Hold up!",
-					text: response.message,
-					icon: "error",
-				});
+				formElements.find('.form-control').prop('readonly', false);
+	            formElements.find('.form-select').prop('readonly', false);
+				if(typeof response.errorFields !== "undefined"){
+					var errorFields = response.errorFields;
+					errorFields.forEach(function(errorFieldsItem) {
+						var fieldName = errorFieldsItem['field_name'];
+						var fieldElement = '[name="'+fieldName+'"]';
+						$(fieldElement).addClass( "--invalid" );
+						if(errorFieldsItem['error_message']){
+							var fieldErrorMessage = errorFieldsItem['error_message'];
+							$(fieldElement).siblings('.form-error').html( fieldErrorMessage );
+						}
+					});
+				}
+				if(typeof response.message !== 'undefined'){
+					swal({
+						title: "Hold up!",
+						text: response.message,
+						icon: "error",
+					});
+				}
+			
 			}else if(response.status == 'success'){
 
 				submitButton.prop('disabled', false);
 				submitButton.removeClass('--processing');
+				formElements.find('.form-control').prop('readonly', false);
+	            formElements.find('.form-select').prop('readonly', false);
 
 				var vehicle_make = response.vehicle_make;
 				if(vehicle_make){
